@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* fr — fracciones del espacio disponible
+Es la unidad más característica de Grid.
+Representa una fracción del espacio libre disponible.
+ 💡 Ideal para hacer layouts flexibles y proporcionados. */
+
+/* px, em, rem — unidades fijas
+Usan un tamaño exacto, no se adaptan al espacio disponible. 
+💡 Útiles para cosas que no deben achicarse, como un sidebar.*/
+
+/* % — porcentaje del contenedor
+El tamaño se calcula en función del ancho total del contenedor. 
+💡 Menos usado que fr, pero fácil de entender si ya conocen porcentajes.*/
+
+/* auto — se adapta al contenido
+La celda toma el tamaño del contenido más grande de esa columna o fila. */
+
+/* Podés mezclar distintas unidades en una misma grilla: 
+grid-template-columns: 200px 1fr 2fr auto;
+
+Primera columna fija en 200 px.
+Segunda y tercera comparten el espacio libre (1 y 2 partes).
+Cuarta se adapta al contenido.
+
+fr reparte lo que sobra después de asignar los tamaños fijos (px, auto, etc.).
+*/
+
+/* Contenedor principal con Grid */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "main   aside"
+    "footer footer";
+  grid-template-columns: 3fr 1fr; /* main más ancho que aside */
+  grid-template-rows: 100px 1fr 60px;
+  gap: 10px;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Áreas nombradas */
+header {
+  grid-area: header;
+  background: #4caf50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* nav dentro del header */
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  display: flex;
+  gap: 15px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Áreas nombradas */
+main {
+  grid-area: main;
+  background: #ddd;
+  padding: 20px;
+}
+
+aside {
+  grid-area: aside;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Áreas nombradas */
+footer {
+  grid-area: footer;
+  background: #333;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
